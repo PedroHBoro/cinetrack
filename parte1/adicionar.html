@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar filme - CineTrack</title>
+</head>
+<body>
+    <a href="index.html">← Voltar</a>
+    <h1>Adicionar filme</h1>
+    <form action="" method="post" id="form-filme">
+        <p>
+            <label for="input-titulo">Título</label><br>
+            <input required type="text" id="input-titulo">
+        </p>
+        <p>
+            <label for="input-ano">Ano</label><br>
+            <input required type="number" id="input-ano" max="2030" min="1888">
+        </p>
+        <p>
+            <label for="input-genero">Gênero</label><br>
+            <input required type="text" id="input-genero"> 
+        </p>
+        <p>
+            <label for="input-poster">Poster</label><br>
+            <input type="url" id="input-poster">
+        </p>
+        <p>
+            <label for="select-status">Status</label><br>
+            <select required id="select-status">
+                <option value="assistido">Assistido</option>
+                <option value="assistindo">Assistindo</option>
+                <option value="quero-assistir">Quero assistir</option>
+            </select>
+        </p>
+        <p>
+            <label for="input-nota">Nota (1 a 5)</label><br>
+            <input type="number" id="input-nota" min="1" max="5">
+        </p>
+        <p>
+            <label for="textarea-comentario">Comentário</label><br>
+            <textarea id="textarea-comentario"></textarea>
+        </p>
+
+        <p>
+            <button type="button">Cancelar</button>
+            <button type="submit">Salvar</button>
+        </p>
+    </form>
+</body>
+</html>
