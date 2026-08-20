@@ -6,33 +6,32 @@
         <title>CineTrack</title>
     </head>
     <body>
-        <h1>CineTrack</h1>
-        <p>
-            <strong>CineTrack</strong>
-            é seu gerenciador pessoal de filmes: registre o que já viu, o que
-            está vendo e o que quer ver.
-        </p>
-        <h2>Status possíveis</h2>
-        <ul class="lista-status">
-            <li class="item-status">Assistido</li>
-            <li class="item-status">Assistindo</li>
-            <li class="item-status">Quero assistir</li>
-        </ul>
-        <h2>Meus filmes favoritos</h2>
-        <ol>
-            <li>Interestelar</li>
-            <li>Harry Potter e o Prisioneiro de Azkaban</li>
-            <li>Devoradores de Estrelas</li>
-        </ol>
-        <h2>Sobre Interestelar</h2>
-        <dl>
-            <dt>Diretor</dt>
-            <dd>Christopher Nolan</dd>
-            <dt>Ano</dt>
-            <dd>2014</dd>
-            <dt>Gênero</dt>
-            <dd>Ficção científica</dd>
-        </dl>
-        <p>&copy; 2025 CineTrack</p>
+        <header>
+            <h1>CineTrack</h1>
+            <input type="search" placeholder="Buscar filme">
+            <button>+ Adicionar</button>
+        </header>
+        <nav aria-label="Filtros de status">
+            <button class="ativo">Todos</button>
+            <button>Assistido</button>
+            <button>Assistindo</button>
+            <button>Quero assistir</button>
+        </nav>
+        <main>
+            <section id="lista" aria-live="polite">
+                <article class="card">
+                    <img src="" alt="">
+                    <h2 class="titulo"></h2>
+                    <span class="ano"></span>*<span class="genero"></span>
+                    <p class="nota">Nota:</p>
+                    <span class="status"></span>
+                    <button>Editar</button>
+                    <button>Remover</button>
+                </article>
+            </section>
+        </main>
+        <footer>
+            <small>CineTrack - UEM</small>
+        </footer>
     </body>
 </html>
