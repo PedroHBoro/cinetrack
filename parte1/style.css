@@ -1,0 +1,74 @@
+:root {
+
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: center;
+    padding: .5rem;
+}
+
+header input {
+    flex: 1 1 240px;
+    height: 2.2rem;
+}
+
+header button {
+    height: 2.2rem;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: .5rem;
+    padding: .5rem;
+}
+
+nav button {
+    border-radius: 1rem;
+    padding: .3rem;
+    border: 1px solid;
+}
+
+nav button.ativo {
+    background-color: gray;
+}
+
+section#lista {
+    padding: .3rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+#lista article {
+    width: 350px;
+    height: 250px;
+    padding: 1rem;
+    border: 1px solid;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem
+}
+
+#lista article div.card-info {
+    display: flex;
+    flex-direction: column;
+}
+
+#lista article div.card-inner {
+    flex: 1;
+}
+
+#lista article div.card-actions button {
+    border-radius: .5rem;
+    padding: .5rem;
+    border: 1px solid;
+}
+
+#lista article img {
+    min-height: 0;
+    height: 250px;
+}
