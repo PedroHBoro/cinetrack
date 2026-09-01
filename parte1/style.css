@@ -1,13 +1,10 @@
-:root {
-
-}
-
 header {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     gap: 2rem;
     align-items: center;
-    padding: .5rem;
+    padding: 0 .5rem 0 .5rem ;
 }
 
 header input {
@@ -37,14 +34,17 @@ nav button.ativo {
 }
 
 section#lista {
+    width: 100%;
+    margin: 0 auto;
     padding: .3rem;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 2rem;
 }
 
 #lista article {
-    width: 350px;
+    width: 100%;
+    max-width: 350px;
     height: 250px;
     padding: 1rem;
     border: 1px solid;
