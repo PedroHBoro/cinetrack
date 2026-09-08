@@ -73,6 +73,10 @@ section#lista {
     height: 250px;
 }
 
+#modal[hidden] {
+    display: none;
+}
+
 #modal {
     position: fixed;
     width: 100%;
