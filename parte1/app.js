@@ -63,6 +63,9 @@ const filmesIniciais = [
 
 let filmes = [...filmesIniciais];
 
+const lista = document.querySelector("#lista");
+const nav = document.querySelector("nav");
+
 const TOTAL = filmes.length;
 const ASSISTIDOS = filmes.filter(f => f.status === "assistido").length;
 const ASSISTINDO = filmes.filter(f => f.status === "assistindo").length;
@@ -93,7 +96,7 @@ function renderizarCards(listaFilmes) {
     const cards = listaFilmes
         .map(
             (f) => `
-    <article class="card">
+    <article class="card" data-id="${f.id}">
         <img src="${f.poster}" alt="${f.titulo}">
         <div class="card-info">
             <h2 class="titulo">${f.titulo}</h2>
@@ -118,5 +121,30 @@ function renderizarCards(listaFilmes) {
 
     lista.innerHTML = cards;
 }
+
+lista.addEventListener("click", (e) => {
+    const botao = e.target.closest(".btn-remover");
+    if (!botao) return;
+
+    if (!confirm("Remover este filme?")) return;
+
+    const card = botao.closest(".card");
+    const id = Number(card.dataset.id);
+    filmes = filmes.filter((f) => f.id !== id);
+
+    renderizarCards(filmes);
+});
+
+nav.addEventListener("click", (e) => {
+    const botao = e.target.closest("button");
+    if (!botao) return;
+
+    nav.querySelector(".ativo").classList.remove("ativo");
+    botao.classList.add("ativo");
+
+    const status = botao.dataset.status;
+
+    renderizarCards(filmes.filter((f) => status === "todos" || f.status === status));
+});
 
 renderizarCards(filmes);
