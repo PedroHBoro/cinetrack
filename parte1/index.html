@@ -9,7 +9,7 @@
     <body>
         <header>
             <h1>CineTrack</h1>
-            <input type="search" placeholder="Buscar filme">
+            <input type="search" placeholder="Buscar filme" aria-label="Buscar filme">
             <button>+ Adicionar</button>
         </header>
         <nav aria-label="Filtros de status">
@@ -31,35 +31,35 @@
                 <form action="" method="post" id="form-filme">
                     <p>
                         <label for="input-titulo">Título</label><br>
-                        <input required type="text" id="input-titulo">
+                        <input required type="text" id="input-titulo" name="titulo">
                     </p>
                     <p>
                         <label for="input-ano">Ano</label><br>
-                        <input required type="number" id="input-ano" max="2030" min="1888">
+                        <input required type="number" id="input-ano" name="ano" max="2030" min="1888">
                     </p>
                     <p>
                         <label for="input-genero">Gênero</label><br>
-                        <input required type="text" id="input-genero">
+                        <input required type="text" id="input-genero" name="genero">
                     </p>
                     <p>
                         <label for="input-poster">Poster</label><br>
-                        <input type="url" id="input-poster">
+                        <input type="url" id="input-poster" name="poster">
                     </p>
                     <p>
                         <label for="select-status">Status</label><br>
-                        <select required id="select-status">
+                        <select required id="select-status" name="status">
                             <option value="assistido">Assistido</option>
                             <option value="assistindo">Assistindo</option>
-                            <option value="quero-assistir">Quero assistir</option>
+                            <option value="quero">Quero assistir</option>
                         </select>
                     </p>
                     <p>
                         <label for="input-nota">Nota (1 a 5)</label><br>
-                        <input type="number" id="input-nota" min="1" max="5">
+                        <input type="number" id="input-nota" name="nota" min="1" max="5">
                     </p>
                     <p>
                         <label for="textarea-comentario">Comentário</label><br>
-                        <textarea id="textarea-comentario"></textarea>
+                        <textarea id="textarea-comentario" name="comentario"></textarea>
                     </p>
                     <p>
                         <button type="button">Cancelar</button>
