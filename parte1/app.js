@@ -61,10 +61,22 @@ const filmesIniciais = [
     }
 ];
 
-let filmes = [...filmesIniciais];
+const CHAVE = "cinetrack:filmes";
+
+function carregar() {
+    const txt = localStorage.getItem(CHAVE);
+    return txt ? JSON.parse(txt) : [...filmesIniciais];
+}
+
+const salvar = () => localStorage.setItem(CHAVE, JSON.stringify(filmes));
+
+let filmes = carregar();
+let termoAtual = "";
+let statusAtual = "todos";
 
 const lista = document.querySelector("#lista");
 const nav = document.querySelector("nav");
+const busca = document.querySelector("header input");
 
 const btnTodos = document.querySelector("nav button:nth-child(1)");
 const btnAssistido = document.querySelector("nav button:nth-child(2)");
@@ -158,6 +170,29 @@ function renderizarCards(listaFilmes) {
     rodape.textContent = `CineTrack © 2026 · ${filmes.length} filmes cadastrados`;
 }
 
+function aplicarFiltros(listaFilmes, opcoes) {
+    const termo = opcoes.termo.toLowerCase();
+    return listaFilmes
+        .filter((f) => f.titulo.toLowerCase().includes(termo))
+        .filter((f) => opcoes.status === "todos" || f.status === opcoes.status);
+}
+
+function atualizar() {
+    const visiveis = aplicarFiltros(filmes, {
+        termo: termoAtual,
+        status: statusAtual
+    });
+    renderizarCards(visiveis);
+}
+
+function debounce(fn, ms = 300) {
+    let timer;
+    return (...args) => {
+        clearTimeout(timer);
+        timer = setTimeout(() => fn(...args), ms);
+    };
+}
+
 let editandoId = null;
 const modal = document.querySelector("#modal");
 const form = document.querySelector("#form-filme");
@@ -197,8 +232,8 @@ lista.addEventListener("click", (e) => {
     const card = botao.closest(".card");
     const id = Number(card.dataset.id);
     filmes = filmes.filter((f) => f.id !== id);
-
-    renderizarCards(filmes);
+    salvar();
+    atualizar();
 });
 
 lista.addEventListener("click", (e) => {
@@ -233,7 +268,8 @@ form.addEventListener("submit", (e) => {
         filmes = [...filmes, { id: gerarId(filmes), ...dados }];
     }
 
-    renderizarCards(filmes);
+    salvar();
+    atualizar();
     fechar();
 });
 
@@ -244,9 +280,15 @@ nav.addEventListener("click", (e) => {
     nav.querySelector(".ativo").classList.remove("ativo");
     botao.classList.add("ativo");
 
-    const status = botao.dataset.status;
-
-    renderizarCards(filmes.filter((f) => status === "todos" || f.status === status));
+    statusAtual = botao.dataset.status;
+    atualizar();
 });
 
-renderizarCards(filmes);
+const aoDigitar = (e) => {
+    termoAtual = e.target.value;
+    atualizar();
+};
+
+busca.addEventListener("input", debounce(aoDigitar, 300));
+
+atualizar();
