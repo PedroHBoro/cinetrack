@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "titulo": "Interestelar",
+    "ano": 2014,
+    "genero": "Ficção científica",
+    "nota": 5,
+    "status": "assistido",
+    "comentario": "Excelente filme de ficção científica.",
+    "poster": "https://www.themoviedb.org/t/p/w200/6ricSDD83BClJsFdGB6x7cM0MFQ.jpg"
+  },
+  {
+    "id": 2,
+    "titulo": "Harry Potter e o Prisioneiro de Azkaban",
+    "ano": 2004,
+    "genero": "Fantasia",
+    "nota": 5,
+    "status": "assistido",
+    "comentario": "Um dos melhores filmes da franquia.",
+    "poster": "https://www.themoviedb.org/t/p/w200/1HdMUghqlgOIvbsU9ZtO40IPRzl.jpg"
+  },
+  {
+    "id": 3,
+    "titulo": "Devoradores de Estrelas",
+    "ano": 2026,
+    "genero": "Ficção científica",
+    "nota": 4,
+    "status": "quero",
+    "comentario": "Muito aguardado!",
+    "poster": "https://www.themoviedb.org/t/p/w200/2i8uru7rlbHKaoIbC2V4FZLT7uW.jpg"
+  },
+  {
+    "id": 4,
+    "titulo": "Bee Movie",
+    "ano": 2007,
+    "genero": "Animação / Comédia",
+    "nota": 3,
+    "status": "assistido",
+    "comentario": "Segundo as leis da aviação...",
+    "poster": "https://www.themoviedb.org/t/p/w200/puW6ynGLcCowqiYvhPhdbNH8Zzj.jpg"
+  },
+  {
+    "id": 5,
+    "titulo": "O Segredo dos Animais",
+    "ano": 2006,
+    "genero": "Animação / Comédia",
+    "nota": 4,
+    "status": "assistindo",
+    "comentario": "Muito divertido.",
+    "poster": "https://www.themoviedb.org/t/p/w200/iNvWEuE4iRHT7qQJToK2cVW8GBi.jpg"
+  },
+  {
+    "id": 6,
+    "titulo": "Os Sem-Floresta",
+    "ano": 2006,
+    "genero": "Animação / Aventura",
+    "nota": 4,
+    "status": "quero",
+    "comentario": "Clássico da infância.",
+    "poster": "https://www.themoviedb.org/t/p/w200/ozigu0Uu5G8s4e3FzyMhHivgRX0.jpg"
+  }
+]
