@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { gerarId } from "./data/filmes.js";
-import { listar } from "./api.js";
+import { listar, criar, atualizar, remover } from "./api.js";
 import Header from "./components/Header.jsx";
 import Filtros from "./components/Filtros.jsx";
 import ListaFilmes from "./components/ListaFilmes.jsx";
@@ -31,36 +30,29 @@ export default function App() {
       filme.titulo.toLowerCase().includes(busca.toLowerCase())
     );
 
-  function adicionar(novoFilme) {
-    setFilmes((anteriores) => [
-      ...anteriores,
-      {
-        ...novoFilme,
-        id: gerarId(anteriores),
-      },
-    ]);
-  }
-
-  function remover(id) {
-    if (!confirm("Remover este filme?")) return;
-    setFilmes((anteriores) => anteriores.filter((filme) => filme.id !== id));
-  }
-
-  function editar(id, alteracoes) {
-    setFilmes((anteriores) =>
-      anteriores.map((filme) =>
-        filme.id === id ? { ...filme, ...alteracoes, id } : filme
-      )
-    );
-  }
-
-  function salvar(dados) {
-    if (editando.id) {
-      editar(editando.id, dados);
-    } else {
-      adicionar(dados);
+  async function salvar(filme) {
+    try {
+      if (filme.id) {
+        const at = await atualizar(filme.id, filme);
+        setFilmes((fs) => fs.map((f) => (f.id === at.id ? at : f)));
+      } else {
+        const novo = await criar(filme);
+        setFilmes((fs) => [...fs, novo]);
+      }
+      setEditando(null);
+    } catch (erro) {
+      alert(erro.message);
     }
-    setEditando(null);
+  }
+
+  async function removerFilme(id) {
+    if (!confirm("Remover este filme?")) return;
+    try {
+      await remover(id);
+      setFilmes((fs) => fs.filter((f) => f.id !== id));
+    } catch (erro) {
+      alert(erro.message);
+    }
   }
 
   let conteudo;
@@ -73,7 +65,7 @@ export default function App() {
       <ListaFilmes
         filmes={visiveis}
         aoEditar={setEditando}
-        aoRemover={remover}
+        aoRemover={removerFilme}
       />
     );
   }
