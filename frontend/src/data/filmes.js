@@ -1,3 +1,7 @@
+export function gerarId(lista) {
+  return Math.max(0, ...lista.map((filme) => filme.id)) + 1;
+}
+
 export const filmesIniciais = [
   {
     id: 1,
